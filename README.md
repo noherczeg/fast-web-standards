@@ -11,7 +11,7 @@ A simple Proof of Concept project showcasing up-to-date standards in networking 
 - [ ] Lazy CSS imports
 
 ## Generate certificates
-> It is necessarry for HTTP2, and the `build` to succeed.
+> It is necessary for HTTP2, and the `build` to succeed.
 
 ```
 ./gen-cert.sh
