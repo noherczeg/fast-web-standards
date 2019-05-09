@@ -4,11 +4,18 @@ A simple Proof of Concept project showcasing up-to-date standards in networking 
 
 - [X] Docker
 - [X] nginx
-- [ ] HTTPS
-- [ ] HTTP2
-- [ ] ES Modules
+- [X] HTTPS
+- [X] HTTP2
+- [X] ES Modules
 - [ ] Lazy imports
 - [ ] Lazy CSS imports
+
+## Generate certificates
+> It is necessarry for HTTP2, and the `build` to succeed.
+
+```
+./gen-cert.sh
+```
 
 ## Build
 ```
@@ -19,6 +26,10 @@ A simple Proof of Concept project showcasing up-to-date standards in networking 
 ```
 ./run.sh
 ```
+
+The server should be running at: [https://localhost:9090](https://localhost:9090).
+
+> The `./public` folder is mapped to the Container, therefore any file modifications are instantly reflected.
 
 ## Debugging
 ```
