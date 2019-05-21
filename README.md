@@ -6,6 +6,7 @@ A simple Proof of Concept project showcasing up-to-date standards in networking 
 - [X] nginx
 - [X] HTTPS
 - [X] HTTP2
+- [X] GZip content
 - [X] ES Modules
 - [X] Lazy imports
 - [X] Lazy CSS imports
