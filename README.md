@@ -7,8 +7,10 @@ A simple Proof of Concept project showcasing up-to-date standards in networking 
 - [X] HTTPS
 - [X] HTTP2
 - [X] ES Modules
-- [ ] Lazy imports
-- [ ] Lazy CSS imports
+- [X] Lazy imports
+- [X] Lazy CSS imports
+
+> Currently only works in Chrome. Firefox support will arrive in version 67.
 
 ## Generate certificates
 > It is necessary for HTTP2, and the `build` to succeed.
