@@ -5,8 +5,8 @@ export default class Home extends HTMLElement {
   }
 
   static get $$tag() {
-    return 'my-home';
-  };
+    return "my-home";
+  }
 
   connectedCallback() {
     this.render();
@@ -20,6 +20,9 @@ export default class Home extends HTMLElement {
     return `<h2>Home</h2>
             <p>
               Hello from Home!
+            </p>
+            <p>
+              A <a href="#/fake">link</a> to an invalid page.
             </p>`;
   }
 }

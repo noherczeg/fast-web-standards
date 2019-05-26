@@ -1,5 +1,3 @@
-import { singleLineString } from '../../utils/single-line-string.js';
-
 export default class ContactDetails extends HTMLElement {
   constructor() {
     super();
@@ -9,8 +7,8 @@ export default class ContactDetails extends HTMLElement {
   }
 
   static get $$tag() {
-    return 'my-contact-details';
-  };
+    return "my-contact-details";
+  }
 
   static get observedAttributes() {
     return ["contact-id"];
@@ -23,23 +21,27 @@ export default class ContactDetails extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     if (name === "contact-id" && oldValue !== newValue) {
       this.contactId = newValue;
-      fetch(`api/contacts/${this.contactId}.json`).then(r => r.json()).then(resp => {
-        this.contact = resp.data;
-        this.render();
-      });
+      fetch(`api/contacts/${this.contactId}.json`)
+        .then(r => r.json())
+        .then(resp => {
+          this.contact = resp.data;
+          this.render();
+        });
     }
   }
 
   render() {
-    this.shadowRoot.innerHTML = this.contact ? this.contactTemplate : this.loadingTemplate;
+    this.shadowRoot.innerHTML = this.contact
+      ? this.contactTemplate
+      : this.loadingTemplate;
   }
 
   get loadingTemplate() {
-    return '<div>Loading...</div>';
+    return "<div>Loading...</div>";
   }
 
   get contactTemplate() {
-    return singleLineString`<h2>${this.contact.name}</h2>
+    return `<h2>${this.contact.name}</h2>
             <div>
               <h4>Rank:</h4>
               <p>${this.contact.rank}</p>

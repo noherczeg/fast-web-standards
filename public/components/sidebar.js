@@ -9,8 +9,8 @@ export class Sidebar extends HTMLElement {
   }
 
   static get $$tag() {
-    return 'my-sidebar';
-  };
+    return "my-sidebar";
+  }
 
   static get observedAttributes() {
     return ["page"];

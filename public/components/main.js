@@ -1,4 +1,4 @@
-import { getPage } from "../routes.js";
+import { getPage, routes } from "../routes.js";
 
 export class Main extends HTMLElement {
   constructor() {
@@ -8,8 +8,8 @@ export class Main extends HTMLElement {
   }
 
   static get $$tag() {
-    return 'my-main';
-  };
+    return "my-main";
+  }
 
   static get observedAttributes() {
     return ["page"];
@@ -27,11 +27,15 @@ export class Main extends HTMLElement {
   }
 
   render() {
-    import(`./pages${this.page}.js`).then(({ default: DynamicPage }) => {
-      const dynamicPage = new DynamicPage();
+    const page = this.pageAvailable ? this.page : "/404";
+    import(`./pages${page}.js`).then(({ default: DynamicPage }) => {
       this.shadowRoot.innerHTML = "";
-      this.shadowRoot.appendChild(dynamicPage);
+      this.shadowRoot.appendChild(new DynamicPage());
     });
+  }
+
+  get pageAvailable() {
+    return routes.map(r => r.path).includes(this.page);
   }
 }
 

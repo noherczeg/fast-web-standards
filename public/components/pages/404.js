@@ -1,11 +1,11 @@
-export default class News extends HTMLElement {
+export default class FourOhFour extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
   static get $$tag() {
-    return "my-news";
+    return "my-four-oh-four";
   }
 
   connectedCallback() {
@@ -17,11 +17,11 @@ export default class News extends HTMLElement {
   }
 
   get template() {
-    return `<h2>News</h2>
+    return `<h2>404</h2>
             <p>
-              Hello from News!
+              Page not found!
             </p>`;
   }
 }
 
-customElements.define(News.$$tag, News);
+customElements.define(FourOhFour.$$tag, FourOhFour);

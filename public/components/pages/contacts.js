@@ -7,8 +7,8 @@ export default class Contacts extends HTMLElement {
   }
 
   static get $$tag() {
-    return 'my-contacts';
-  };
+    return "my-contacts";
+  }
 
   connectedCallback() {
     fetch("api/contacts.json")
@@ -32,14 +32,16 @@ export default class Contacts extends HTMLElement {
   get template() {
     return `<h2>Contacts</h2>
             <ul>
-              ${this.contacts.map(c => `<li><a href="#/contacts/${c.id}">${c.name}</a></li>`).join('')}
+              ${this.contacts
+                .map(c => `<li><a href="#/contacts/${c.id}">${c.name}</a></li>`)
+                .join("")}
             </ul>
             <div id="contact-details"></div>`;
   }
 
   subRouteChanged() {
     const contactId = this.getContactSelected();
-    const host = this.shadowRoot.getElementById('contact-details');
+    const host = this.shadowRoot.getElementById("contact-details");
     if (contactId) {
       import("./contact-details.js").then(({ default: ContactDetails }) => {
         let contactDetailsPage = null;
@@ -47,9 +49,11 @@ export default class Contacts extends HTMLElement {
           contactDetailsPage = new ContactDetails();
           host.appendChild(contactDetailsPage);
         } else {
-          contactDetailsPage = this.shadowRoot.querySelector(ContactDetails.$$tag);
+          contactDetailsPage = this.shadowRoot.querySelector(
+            ContactDetails.$$tag
+          );
         }
-        contactDetailsPage.setAttribute('contact-id', contactId);
+        contactDetailsPage.setAttribute("contact-id", contactId);
       });
     }
   }

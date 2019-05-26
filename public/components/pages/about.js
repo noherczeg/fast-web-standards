@@ -5,8 +5,8 @@ export default class About extends HTMLElement {
   }
 
   static get $$tag() {
-    return 'my-about';
-  };
+    return "my-about";
+  }
 
   connectedCallback() {
     this.render();
