@@ -11,7 +11,7 @@ A simple Proof of Concept project showcasing up-to-date standards in networking 
 - [X] Lazy imports
 - [X] Lazy CSS imports
 
-> Currently only works in Chrome. Firefox support will arrive in version 67.
+> Currently only works in Chrome 63+, and Firefox 67+.
 
 ## Generate certificates
 > It is necessary for HTTP2, and the `build` to succeed.
