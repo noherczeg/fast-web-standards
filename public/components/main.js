@@ -1,12 +1,18 @@
+import { getPage } from "../routes.js";
+
 export class Main extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.route = null;
+    this.page = getPage();
   }
 
+  static get $$tag() {
+    return 'my-main';
+  };
+
   static get observedAttributes() {
-    return ["route"];
+    return ["page"];
   }
 
   connectedCallback() {
@@ -14,14 +20,14 @@ export class Main extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === "route") {
-      this.route = newValue;
+    if (name === "page" && oldValue !== newValue) {
+      this.page = newValue;
       this.render();
     }
   }
 
   render() {
-    import(`./pages/${this.route}.js`).then(({ default: DynamicPage }) => {
+    import(`./pages${this.page}.js`).then(({ default: DynamicPage }) => {
       const dynamicPage = new DynamicPage();
       this.shadowRoot.innerHTML = "";
       this.shadowRoot.appendChild(dynamicPage);
@@ -29,4 +35,4 @@ export class Main extends HTMLElement {
   }
 }
 
-customElements.define("my-main", Main);
+customElements.define(Main.$$tag, Main);

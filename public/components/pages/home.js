@@ -4,6 +4,10 @@ export default class Home extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  static get $$tag() {
+    return 'my-home';
+  };
+
   connectedCallback() {
     this.render();
   }
@@ -20,4 +24,4 @@ export default class Home extends HTMLElement {
   }
 }
 
-customElements.define("my-home", Home);
+customElements.define(Home.$$tag, Home);

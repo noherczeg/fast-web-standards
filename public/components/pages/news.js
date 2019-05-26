@@ -4,6 +4,10 @@ export default class News extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  static get $$tag() {
+    return 'my-news';
+  };
+
   connectedCallback() {
     this.render();
   }
@@ -20,4 +24,4 @@ export default class News extends HTMLElement {
   }
 }
 
-customElements.define("my-news", News);
+customElements.define(News.$$tag, News);

@@ -1,25 +1,28 @@
+import { getPage, routes } from "../routes.js";
+
 export class Sidebar extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.route = null;
-    this.routes = [];
+    this.page = getPage();
+    this.routes = routes;
   }
 
+  static get $$tag() {
+    return 'my-sidebar';
+  };
+
   static get observedAttributes() {
-    return ["route"];
+    return ["page"];
   }
 
   connectedCallback() {
-    import("../routes.js").then(({ routes }) => {
-      this.routes = routes;
-      this.render();
-    });
+    this.render();
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (name === "route") {
-      this.route = newValue;
+    if (name === "page") {
+      this.page = newValue;
       this.render();
     }
   }
@@ -34,7 +37,7 @@ export class Sidebar extends HTMLElement {
               ${this.routes
                 .map(route => {
                   return `<a class="${
-                    route.path === this.route ? "active" : ""
+                    route.path === this.page ? "active" : ""
                   }" href="#${route.path}">${route.label}</a>`;
                 })
                 .join("")}
@@ -42,4 +45,4 @@ export class Sidebar extends HTMLElement {
   }
 }
 
-customElements.define("my-sidebar", Sidebar);
+customElements.define(Sidebar.$$tag, Sidebar);

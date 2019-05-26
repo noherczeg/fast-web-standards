@@ -4,6 +4,10 @@ export default class About extends HTMLElement {
     this.attachShadow({ mode: "open" });
   }
 
+  static get $$tag() {
+    return 'my-about';
+  };
+
   connectedCallback() {
     this.render();
   }
@@ -20,4 +24,4 @@ export default class About extends HTMLElement {
   }
 }
 
-customElements.define("my-about", About);
+customElements.define(About.$$tag, About);
